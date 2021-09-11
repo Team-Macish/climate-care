@@ -1,0 +1,134 @@
+.initiative-card {
+  display: flex;
+  height: 40vh;
+  width: 16.1vw;
+  border-radius: 10px;
+  color: #000;
+  box-shadow: 0rem 0 1rem #000;
+  transition: 0.4s ease-out;
+  position: relative;
+  background-size: contain!important;
+  background-repeat: no-repeat!important;
+  background-color: #fff!important;
+  cursor: pointer;
+  left: 0px;
+}
+
+.initiative-card:not(:first-child) {
+  margin-left: -50px;
+}
+
+@media (max-width: 1200px) {
+  .initiative-card:not(:first-child) {
+    margin-left: 0px;
+    margin-top: 2vh;
+  }
+}
+
+.initiative-card:hover {
+  transform: translateY(-20px);
+  transition: 0.4s ease-out;
+}
+
+@media (max-width: 1200px) {
+  .initiative-card:hover {
+    transition: 0.4s ease-out;
+    transform: none;
+    border: 2px solid rgb(182,251,150);
+    background-size: contain!important;
+  }
+}
+
+.initiative-card:hover ~ .initiative-card {
+  position: relative;
+  left: 50px;
+  transition: 0.4s ease-out;
+}
+
+@media (max-width: 1200px) {
+  .initiative-card:hover ~ .initiative-card {
+    position: relative;
+    left: 0;
+    transition: 0.4s ease-out;
+  }
+}
+
+.initiative-card > .title {
+  color: #000;
+  font-weight: 300;
+  position: absolute;
+  left: 20px;
+  top: 15px;
+}
+
+.barra {
+  position: absolute;
+  background: #fff;
+  top: 100px;
+  left: 20px;
+  height: 5px;
+  width: 150px;
+}
+
+.barra .emptybar {
+  background-color: #2e3033;
+  width: 100%;
+  height: 100%;
+}
+
+.barra .filledbar {
+  position: absolute;
+  top: 0px;
+  z-index: 3;
+  width: 0px;
+  height: 100%;
+  background: rgb(0,154,217);
+  background: linear-gradient(90deg, rgba(0,154,217,1) 0%, rgba(217,147,0,1) 65%, rgba(255,186,0,1) 100%);
+  transition: 0.6s ease-out;
+}
+
+.initiative-card:hover .filledbar {
+  width: 120px;
+  transition: 0.4s ease-out;
+}
+
+.circle {
+  position: absolute;
+  top: 150px;
+  left: calc(50% - 60px);
+}
+
+.stroke {
+  stroke: white;
+  stroke-dasharray: 360;
+  stroke-dashoffset: 360;
+  transition: 0.6s ease-out;
+}
+
+svg {
+  fill: #17141d;
+  stroke-width: 2px;
+}
+
+.initiative-card:hover .stroke {
+  stroke-dashoffset: 100;
+  transition: 0.6s ease-out;
+}
+
+#initiative-card-holder {
+  display: flex;
+}
+
+@media (max-width: 1200px) {
+  #initiative-card-holder {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 1200px) {
+  .initiative-card {
+    width: 90vw!important;
+  }
+}
+
