@@ -70,14 +70,14 @@
     <section class="d-flex d-xxl-flex justify-content-xxl-start contact-clean" style="background: transparent;">
         <div class="d-flex flex-row" style="width: 80vw;margin-right: auto;margin-left: auto;text-align:center">
             <div id="contact-card-des" style="width: 10vw;background: url(&quot;assets/img/topography.svg&quot;), #b6fb96;"></div>
-            <form class="d-flex flex-column align-self-start align-items-xxl-start" method="post" style="background: transparent;max-width:100%" action="https://sheetdb.io/api/v1/olcis30slyk67">
+            <form class="d-flex flex-column align-self-start align-items-xxl-start" id="contact_form" method="post" style="background: transparent;max-width:100%" action="https://sheetdb.io/api/v1/olcis30slyk67">
                 <h2 class="text-center" style="font-family: 'Montserrat Alternates', sans-serif;font-size: 35px;color: #b6fb96;">Want to help ? Let's talk !</h2>
                 <div class="mb-3" style="max-width: 80vw;width: 100%;"><input class="form-control" type="text" name="data[name]" placeholder="Name" style="font-family: 'Montserrat Alternates', sans-serif;background: transparent;color: rgb(107,144,95);padding: 2vh;border: 1px none black;border-bottom-style: solid;border-bottom-color: rgb(182,251,150);"></div>
                 <div class="mb-3" style="max-width: 80vw;width: 100%;"><input class="form-control" type="email" name="data[email]" placeholder="E-mail Address" style="font-family: 'Montserrat Alternates', sans-serif;background: transparent;color: rgb(107,144,95);padding: 2vh;border: 1px none black;border-bottom-style: solid;border-bottom-color: rgb(182,251,150);"></div>
                 <div class="mb-3" style="max-width: 80vw;width: 100%;"><input class="form-control" type="tel" name="data[mobile]" placeholder="Mobile No." style="font-family: 'Montserrat Alternates', sans-serif;background: transparent;color: rgb(107,144,95);padding: 2vh;border: 1px none black;border-bottom-style: solid;border-bottom-color: rgb(182,251,150);"></div>
                 <div class="mb-3" style="max-width: 80vw;width: 100%;"><input class="form-control" type="text" name="data[subject]" placeholder="How do you want to help?" style="font-family: 'Montserrat Alternates', sans-serif;background: transparent;color: rgb(107,144,95);padding: 2vh;border: 1px none black;border-bottom-style: solid;border-bottom-color: rgb(182,251,150);"></div>
                 <div class="mb-3" style="max-width: 80vw;width: 100%;"><textarea class="form-control" name="data[desc]" placeholder="Write anything you would like us to know." rows="14" style="font-family: 'Montserrat Alternates', sans-serif;background: transparent;color: rgb(107,144,95);padding: 2vh;border: 1px none black;border-bottom-style: solid;border-bottom-color: rgb(182,251,150);"></textarea></div>
-                <div class="mb-3" style="max-width: 80vw;width: 100%;text-align:end"><button class="btn btn-primary" type="submit" style="font-family: 'Montserrat Alternates', sans-serif;" onclick="alert(&quot;We&#39;ve received your details. We&#39;ll get in touch soon. Till then, keep on helping :)&quot;);">SUBMIT</button></div>
+                <div class="mb-3" style="max-width: 80vw;width: 100%;text-align:end"><button class="btn btn-primary" type="submit" style="font-family: 'Montserrat Alternates', sans-serif;">SUBMIT</button></div>
             </form>
         </div>
     </section>
@@ -142,7 +142,22 @@
             <hr>
             <p class="copyright"><span></span>&lt;&nbsp;Built with&nbsp;<i class="fa fa-heart-o"></i>&nbsp;by Team Macish. /&gt;<br></p>
         </div>
-    </footer>
+    </footer><script>
+        var form = document.getElementById('contact_form');
+        form.addEventListener("submit", e => {
+            e.preventDefault();
+            fetch(form.action, {
+                method: "POST",
+                body: new FormData(document.getElementById("contact_form")),
+            }).then(
+                response => response.json()
+            ).then((html) => {
+                // you can put any JS code here
+                form.reset();
+               alert('We haveve received your details. We will get in touch soon. Till then, keep on helping :)');
+            });
+        });
+</script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
